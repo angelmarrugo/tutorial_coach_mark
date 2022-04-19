@@ -109,6 +109,7 @@ abstract class AnimatedFocusLightState extends State<AnimatedFocusLight>
   void _runFocus();
 
   void _nextFocus() {
+    print('nextFocus $_currentFocus >= length ${widget.targets.length -1 }');
     if (_currentFocus >= widget.targets.length - 1) {
       _finish();
       return;
