@@ -4,7 +4,7 @@ import 'package:tutorial_coach_mark/src/target/target_position.dart';
 
 enum ShapeLightFocus { Circle, RRect }
 
-TargetPosition? getTargetCurrent(TargetFocus target) {
+TargetPosition? getTargetCurrent(TargetFocus target, Function? skip) {
   if (target.keyTarget != null) {
     var key = target.keyTarget!;
 
@@ -24,6 +24,7 @@ TargetPosition? getTargetCurrent(TargetFocus target) {
 
       return TargetPosition(size, offset);
     } catch (e) {
+      skip?.call();
       print(
           "TutorialCoachMark (ERROR): It was not possible to obtain target position.");
       return null;
@@ -37,4 +38,5 @@ abstract class TutorialCoachMarkController {
   void next();
   void previous();
   void skip();
+  void error();
 }

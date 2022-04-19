@@ -17,6 +17,7 @@ class TutorialCoachMarkWidget extends StatefulWidget {
     this.alignSkip = Alignment.bottomRight,
     this.textSkip = "SKIP",
     this.onClickSkip,
+    this.onError,
     this.colorShadow = Colors.black,
     this.opacityShadow = 0.8,
     this.textStyleSkip = const TextStyle(color: Colors.white),
@@ -38,6 +39,7 @@ class TutorialCoachMarkWidget extends StatefulWidget {
   final double opacityShadow;
   final double paddingFocus;
   final Function()? onClickSkip;
+  final Function()? onError;
   final AlignmentGeometry alignSkip;
   final String textSkip;
   final TextStyle textStyleSkip;
@@ -113,7 +115,7 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
 
     List<Widget> children = <Widget>[];
 
-    final target = getTargetCurrent(currentTarget!);
+    final target = getTargetCurrent(currentTarget!, skip);
     if (target == null) {
       return SizedBox.shrink();
     }
@@ -246,4 +248,6 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget>
   void next() => _focusLightKey.currentState?.next();
 
   void previous() => _focusLightKey.currentState?.previous();
+
+  void error() => widget.onClickSkip?.call();
 }

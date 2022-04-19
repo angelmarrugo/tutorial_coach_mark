@@ -238,7 +238,7 @@ class AnimatedStaticFocusLightState extends AnimatedFocusLightState {
         widget.focusAnimationDuration ??
         defaultFocusAnimationDuration;
 
-    var targetPosition = getTargetCurrent(_targetFocus);
+    var targetPosition = getTargetCurrent(_targetFocus, widget.finish);
 
     if (targetPosition == null) {
       _finish();
@@ -376,7 +376,7 @@ class AnimatedPulseFocusLightState extends AnimatedFocusLightState {
         widget.pulseVariation ??
         defaultPulseVariation);
 
-    var targetPosition = getTargetCurrent(_targetFocus);
+    var targetPosition = getTargetCurrent(_targetFocus, widget.finish);
 
     if (targetPosition == null) {
       _finish();
