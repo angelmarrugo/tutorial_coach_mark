@@ -26,7 +26,7 @@ TargetPosition? getTargetCurrent(TargetFocus target, Function? skip) {
     } catch (e) {
       skip?.call();
       print(
-          "TutorialCoachMark (ERROR): It was not possible to obtain target position.");
+          "TutorialCoachMark (ERROR): It was not possible to obtain target position.!");
       return null;
     }
   } else {
